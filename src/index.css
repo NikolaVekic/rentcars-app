@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+@import "tailwindcss";
+
+/* RESET */
+:root {
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* img,
+picture {
+  max-width: 100%;
+  display: block;
+} */
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* THEME VARIABLES */
+@theme {
+  --max-width-container: 1240px;
+  --font-family-poppins: "Poppins", sans-serif;
+  --base-font-size: 16px;
+  --color-primary: #030014; /* Example primary color */
+  --btn-color: #1572d3;
+  --btn-color-hover: #1572d3;
+}
+
+/* BASE STYLES */
+@layer base {
+  body {
+    font-family: var(--font-family-poppins), sans-serif;
+    font-size: var(--base-font-size) px; /* <— Careful: remove the space before px */
+    color: #000;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* UTILITIES */
+@utility container {
+  max-width: var(--max-width-container);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* CUSTOM COMPONENTS */
+@layer components {
+  header {
+    @apply w-full  text-[#484848];
+  }
+
+  .header-inner {
+    @apply container flex items-center justify-between py-4;
+  }
+
+  .logo {
+    @apply text-xl font-semibold;
+  }
+
+  .nav-links {
+    @apply flex gap-12;
+  }
+
+  .nav-links a {
+    @apply text-black no-underline hover:text-blue-500 transition-colors;
+  }
+
+  .nav-btn {
+    background-color: var(--btn-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 12px 26px;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 500 !important;
+    cursor: pointer;
+  }
+
+  .nav-btn:hover {
+    background-color: #2680dc;
+  }
+
+  .hero-btn {
+    background-color: #000;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+  }
+
+  .nav-btn-mobile {
+    background-color: var(--btn-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 8px 16px;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 500 !important;
+    cursor: pointer;
+    font-size: 24px !important;
+  }
+}
+
+.modal-close {
+  font-size: 2rem !important;
+}
+
+@media screen and (max-width: 1025px) {
+  .hero-btn {
+    padding: 8px 12px;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+  }
+}
